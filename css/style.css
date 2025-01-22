@@ -571,41 +571,6 @@ header .search-bar-container label:hover{
   padding:.5rem 0;
 }
 
-.review .review-slider{
-  padding-bottom: 2rem;
-}
-
-.review .box{
-  padding:2rem;
-  text-align: center;
-  box-shadow: 0 1rem 2rem rgba(0,0,0,.1);
-  border-radius: .5rem;
-}
-
-.review .box img{
-  height:13rem;
-  width:13rem;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 1rem;
-}
-
-.review .box h3{
-  color:orange;
-  font-size: 2.5rem;
-  font-weight: 600;
-}
-
-.review .box p{
-  color:#666;
-  font-size: 1.5rem;
-  padding:1rem 0;
-}
-
-.review .box .stars i{
-  color:var(--orange);
-  font-size: 1.7rem;
-}
 
 .contact .row{
   display: flex;
@@ -824,6 +789,74 @@ header .search-bar-container label:hover{
   }
 
 }
+   
+
+    /* Ensure the parent navbar uses flexbox for inline layout */
+    .navbar ul {
+        display: flex;
+        justify-content: space-around; /* Distributes items evenly */
+        align-items: center; /* Centers items vertically */
+        list-style: none; /* Removes bullets */
+        margin: 0;
+        padding: 0;
+        background-color: #333; /* Navbar background */
+    }
+
+    .navbar ul li {
+        position: relative; /* Positioning for dropdown functionality */
+    }
+
+    /* Link styling for all navbar items */
+    .navbar ul li a {
+        text-decoration: none;
+        color: white;
+        padding: 10px 15px;
+        display: block;
+        transition: background-color 0.3s;
+    }
+
+    .navbar ul li a:hover {
+        background-color: #555; /* Highlight on hover */
+    }
+
+    /* Specific styling for dropdown */
+    .dropdown-content {
+        display: none; /* Hidden by default */
+        position: absolute;
+        top: 100%; /* Places dropdown below the parent item */
+        left: 0;
+        background-color: #444; /* Background for dropdown */
+        min-width: 200px; /* Ensures width for dropdown options */
+        z-index: 1000; /* Ensures it appears on top */
+        border-radius: 5px; /* Rounded corners */
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Optional: subtle shadow */
+    }
+
+    /* Dropdown item styles */
+    .dropdown-content li {
+        border-bottom: 1px solid #555;
+    }
+
+    .dropdown-content li:last-child {
+        border-bottom: none;
+    }
+
+    .dropdown-content a {
+        color: white;
+        padding: 10px;
+        display: block;
+        transition: background-color 0.3s;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #555;
+    }
+
+    /* Show dropdown on hover */
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
 
 @media (max-width:450px){
 

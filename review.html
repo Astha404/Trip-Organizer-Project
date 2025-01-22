@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write a Review</title>
+    <style>
+        /* General reset */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Trebuchet MS', sans-serif;
+            background: url('https://wallpapercave.com/wp/wp4069456.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 90%;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input, textarea, button {
+            font-size: 16px;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            font-size: 1em;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-button {
+            margin-top: 15px;
+        }
+
+        .back-button a {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #e67e22;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .back-button a:hover {
+            background-color: #d35400;
+            transform: translateY(-3px);
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        .reviews-section {
+            margin-top: 30px;
+        }
+
+        .review-card {
+            background: #f9f9f9;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .review-card h3 {
+            margin: 0 0 10px;
+            font-size: 1.2em;
+            color: #2c3e50;
+        }
+
+        .review-card p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        footer {
+            margin-top: 20px;
+            color: #555;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px auto;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            button, .back-button a {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Share Your Travel Experience</h1>
+        <form id="reviewForm">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea id="review" rows="5" placeholder="Write about your journey..." required></textarea>
+            <button type="submit">Submit Review</button>
+        </form>
+        <!-- Back Button -->
+        <div class="back-button">
+            <a href="index.html">← Back to Our Website</a>
+        </div>
+
+        <!-- Reviews Section -->
+        <div class="reviews-section" id="reviewsSection">
+            <h2>Latest Reviews</h2>
+        </div>
+    </div>
+    
+    <script>
+        // JavaScript to handle form submission
+        document.getElementById("reviewForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the form from reloading the page
+            
+            // Get the input values
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const reviewText = document.getElementById("review").value;
+
+            // Create a new review card
+            const reviewCard = document.createElement("div");
+            reviewCard.classList.add("review-card");
+
+            reviewCard.innerHTML = `
+                <h3>${name}</h3>
+                <p><strong>Email:</strong> ${email}</p>
+                <p>${reviewText}</p>
+            `;
+
+            // Append the new review to the reviews section
+            document.getElementById("reviewsSection").appendChild(reviewCard);
+
+            // Clear the form fields
+            document.getElementById("reviewForm").reset();
+
+            // Show a success message
+            alert("Thank you for your review!");
+        });
+    </script>
+</body>
+</html>
