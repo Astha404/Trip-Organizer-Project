@@ -22,6 +22,104 @@
 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        .search-bar-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#search-bar {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#suggestions {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 100%;
+    background: white;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 1000;
+}
+
+#suggestions li {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+}
+
+#suggestions li:hover {
+    background: #f1f1f1;
+}
+/* Chatbot Floating Icon */
+#chat-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: #007bff;
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+}
+
+/* Chatbot Box */
+#chat-container {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 300px;
+    display: none; /* Initially Hidden */
+}
+
+#chat-box {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    padding: 10px;
+}
+
+/* Chat Header */
+#chat-header {
+    display: flex;
+    justify-content: space-between;
+    background: #007bff;
+    color: white;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+}
+
+/* Chat Input */
+#chat-input {
+    width: 80%;
+    padding: 5px;
+}
+
+/* Close Button */
+#chat-header button {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+    </style>
 
 </head>
 <body>
@@ -50,10 +148,12 @@
         <i class="fas fa-user" id="login-btn"></i>
     </div>
 
-    <form action="searchBar.html" class="search-bar-container">
-        <input type="search" id="search-bar" placeholder="search here...">
+    <form action="" class="search-bar-container">
+        <input type="search" id="search-bar" placeholder="Search destinations, hotels..." autocomplete="off">
         <label for="search-bar" class="fas fa-search"></label>
+        <ul id="suggestions"></ul>
     </form>
+    
 
 </header>
 
@@ -97,7 +197,45 @@
             alert("Please enter valid login details.");
         }
     }
+
+        
+    function initAutocomplete() {
+    const searchInput = document.getElementById("search-bar");
+    const suggestions = document.getElementById("suggestions");
+
+    const autocomplete = new google.maps.places.Autocomplete(searchInput, {
+        types: ["geocode", "establishment"],
+    });
+
+    searchInput.addEventListener("input", function () {
+        suggestions.innerHTML = "";
+        suggestions.style.display = "block";
+
+        autocomplete.getPlacePredictions({ input: searchInput.value }, (results, status) => {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+                results.forEach((place) => {
+                    const li = document.createElement("li");
+                    li.textContent = place.description;
+                    li.onclick = function () {
+                        searchInput.value = place.description;
+                        suggestions.innerHTML = "";
+                        suggestions.style.display = "none";
+                    };
+                    suggestions.appendChild(li);
+                });
+            }
+        });
+    });
+
+    document.addEventListener("click", function (e) {
+        if (!searchInput.contains(e.target)) {
+            suggestions.style.display = "none";
+        }
+    });
+}
 </script>
+<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initAutocomplete"></script> -->
+
 
 
 <!-- home section starts  -->
@@ -552,6 +690,73 @@
 <div id="totopscroller"></div>
 <!-- preloader  -->
 <div class="fakeLoader"></div>
+
+<!-- Chatbot Icon -->
+<div id="chat-icon" onclick="toggleChatbot()">
+    💬
+</div>
+
+<!-- Chatbot Box (Initially Hidden) -->
+<div id="chat-container">
+    <div id="chat-box">
+        <div id="chat-header">
+            <span>Chat with Us</span>
+            <button onclick="toggleChatbot()">✖</button>
+        </div>
+        <div id="chat-messages"></div>
+        <input type="text" id="chat-input" placeholder="Type a message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+<script>
+function toggleChatbot() {
+    var chatContainer = document.getElementById("chat-container");
+    if (chatContainer.style.display === "none" || chatContainer.style.display === "") {
+        chatContainer.style.display = "block";
+    } else {
+        chatContainer.style.display = "none";
+    }
+}
+
+function sendMessage() {
+    let input = document.getElementById("chat-input").value;
+    let chatMessages = document.getElementById("chat-messages");
+
+    if (input.trim() !== "") {
+        // Add user message
+        let userMessage = `<div class="chat-message user"><strong>You:</strong> ${input}</div>`;
+        chatMessages.innerHTML += userMessage;
+
+        // Get bot response
+        let botResponse = getBotResponse(input);
+        setTimeout(() => {
+            let botMessage = `<div class="chat-message bot"><strong>Bot:</strong> ${botResponse}</div>`;
+            chatMessages.innerHTML += botMessage;
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }, 600); // Delay for a more natural response
+
+        // Clear input field
+        document.getElementById("chat-input").value = "";
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+}
+
+function getBotResponse(input) {
+    input = input.toLowerCase();
+    if (input.includes("hello")) {
+        return "Hi there! How can I help you with your travel plans?";
+    } else if (input.includes("hotel")) {
+        return "I can help you find hotels! Try searching in the booking section.";
+    } else if (input.includes("places")) {
+        return "You can check the 'Explore' section for amazing places to visit!";
+    } else if (input.includes("flights")) {
+        return "Looking for flights? Check out airline websites for the best deals!";
+    } else {
+        return "I'm not sure about that. Try asking about travel, hotels, or destinations!";
+    }
+}
+</script>
+
 
 
 

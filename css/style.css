@@ -679,6 +679,7 @@ header .search-bar-container label:hover{
   right: 30px;
   bottom: 30px;
   width: 43px;
+  padding-bottom: 5rem;
   }
   #totopscroller div {
   width: 49px;
