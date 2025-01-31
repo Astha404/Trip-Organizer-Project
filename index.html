@@ -62,63 +62,85 @@
     background: #f1f1f1;
 }
 /* Chatbot Floating Icon */
-#chat-icon {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    background: #007bff;
-    color: white;
-    font-size: 24px;
-    text-align: center;
-    line-height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
-}
+body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://source.unsplash.com/1600x900/?travel,adventure') no-repeat center center fixed;
+            background-size: cover;
+        }
 
-/* Chatbot Box */
-#chat-container {
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
-    width: 300px;
-    display: none; /* Initially Hidden */
-}
+        .chat-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #007bff;
+            color: white;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s;
+        }
 
-#chat-box {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-    padding: 10px;
-}
+        .chat-icon:hover {
+            background: #0056b3;
+        }
 
-/* Chat Header */
-#chat-header {
-    display: flex;
-    justify-content: space-between;
-    background: #007bff;
-    color: white;
-    padding: 10px;
-    border-radius: 10px 10px 0 0;
-}
+        .chat-container {
+            display: none;
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 300px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
 
-/* Chat Input */
-#chat-input {
-    width: 80%;
-    padding: 5px;
-}
+        .chat-header {
+            background: #007bff;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 18px;
+        }
 
-/* Close Button */
-#chat-header button {
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-}
+        .chat-messages {
+            height: 250px;
+            overflow-y: auto;
+            padding: 10px;
+            background: #f9f9f9;
+        }
 
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .chat-input button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            margin-left: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 
 </head>
@@ -355,7 +377,7 @@
             <a href="images/p-1.jpg" data-lightbox="image-1" data-title="Mumbai"><img src="images/p-1.jpg" alt="image"></a>
             <div class="content">
                 <h3> <i class="fas fa-map-marker-alt"></i> mumbai </h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
+                <p>Mumbai (formerly called Bombay) is a densely populated city on India’s west coast. A financial center, it's India's largest city. On the Mumbai Harbour waterfront stands the iconic Gateway of India stone arch, built by the British Raj in 1924. Offshore, nearby Elephanta Island holds ancient cave temples dedicated to the Hindu god Shiva.</p>
                 <div class="stars">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -372,7 +394,7 @@
             <a href="images/p-2.jpg" data-lightbox="image-1" data-title="Hawaii"><img src="images/p-2.jpg" alt="image"></a>
             <div class="content">
                 <h3> <i class="fas fa-map-marker-alt"></i> hawaii </h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
+                <p>Hawaii is an island state of the United States, in the Pacific Ocean about 2,000 miles southwest of the U.S. mainland. One of the two non-contiguous U.S. states, it is the only state not on the North American mainland, the only state that is an archipelago, and the only state in the tropics.</p>
                 <div class="stars">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -389,7 +411,7 @@
             <a href="images/p-3.jpg" data-lightbox="image-3" data-title="Sydney"><img src="images/p-3.jpg" alt="image"></a>
             <div class="content">
                 <h3> <i class="fas fa-map-marker-alt"></i> sydney </h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
+                <p>Sydney, capital of New South Wales and one of Australia's largest cities, is best known for its harbourfront Sydney Opera House, with a distinctive sail-like design. Massive Darling Harbour and the smaller Circular Quay port are hubs of waterside life, with the arched Harbour Bridge and esteemed Royal Botanic Garden nearby. </p>
                 <div class="stars">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -406,7 +428,7 @@
             <a href="images/p-4.jpg" data-lightbox="image-4" data-title="My caption"><img src="images/p-4.jpg" alt="image"></a>
             <div class="content">
                 <h3> <i class="fas fa-map-marker-alt"></i> paris </h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
+                <p>Paris, France's capital, is a major European city and a global center for art, fashion, gastronomy and culture. Its 19th-century cityscape is crisscrossed by wide boulevards and the River Seine. </p>
                 <div class="stars">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -427,7 +449,7 @@
             <a href="images/p-5.jpg" data-lightbox="image-1" data-title="Singapur"><img src="images/p-2.jpg" alt="image"></a>
             <div class="content">
                 <h3> <i class="fas fa-map-marker-alt"></i> Singapur </h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
+                <p>Singapore, officially the Republic of Singapore, is an island country and city-state in Southeast Asia. The country's territory comprises one main island, 63 satellite islands and islets, and one outlying islet.</p>
                 <div class="stars">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -444,7 +466,7 @@
             <a href="images/p-6.jpg" data-lightbox="image-3" data-title="America"><img src="images/p-3.jpg" alt="image"></a>
             <div class="content">
                 <h3> <i class="fas fa-map-marker-alt"></i> America </h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
+                <p>The U.S. is a country of 50 states covering a vast swath of North America, with Alaska in the northwest and Hawaii extending the nation’s presence into the Pacific Ocean.</p>
                 <div class="stars">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -461,7 +483,7 @@
             <a href="images/p-2.jpg" data-lightbox="image-4" data-title="Paris"><img src="images/p-4.jpg" alt="image"></a>
             <div class="content">
                 <h3> <i class="fas fa-map-marker-alt"></i> paris </h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
+                <p>Paris, France's capital, is a major European city and a global center for art, fashion, gastronomy and culture. Its 19th-century cityscape is crisscrossed by wide boulevards and the River Seine.</p>
                 <div class="stars">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -692,70 +714,84 @@
 <div class="fakeLoader"></div>
 
 <!-- Chatbot Icon -->
-<div id="chat-icon" onclick="toggleChatbot()">
-    💬
-</div>
-
-<!-- Chatbot Box (Initially Hidden) -->
-<div id="chat-container">
-    <div id="chat-box">
-        <div id="chat-header">
-            <span>Chat with Us</span>
-            <button onclick="toggleChatbot()">✖</button>
+<div class="chat-icon" id="chat-icon">💬</div>
+    <div class="chat-container" id="chat-container">
+        <div class="chat-header">Chatbot</div>
+        <div class="chat-messages" id="chat-messages"></div>
+        <div class="chat-input">
+            <input type="text" id="chat-input" placeholder="Type a message...">
+            <button id="send-button">Send</button>
         </div>
-        <div id="chat-messages"></div>
-        <input type="text" id="chat-input" placeholder="Type a message...">
-        <button onclick="sendMessage()">Send</button>
     </div>
-</div>
 <script>
-function toggleChatbot() {
-    var chatContainer = document.getElementById("chat-container");
-    if (chatContainer.style.display === "none" || chatContainer.style.display === "") {
-        chatContainer.style.display = "block";
-    } else {
-        chatContainer.style.display = "none";
-    }
-}
 
-function sendMessage() {
-    let input = document.getElementById("chat-input").value;
-    let chatMessages = document.getElementById("chat-messages");
+        document.addEventListener("DOMContentLoaded", function () {
+            let chatIcon = document.getElementById("chat-icon");
+            let chatContainer = document.getElementById("chat-container");
+            let sendButton = document.getElementById("send-button");
+            let chatInput = document.getElementById("chat-input");
+            let chatMessages = document.getElementById("chat-messages");
 
-    if (input.trim() !== "") {
-        // Add user message
-        let userMessage = `<div class="chat-message user"><strong>You:</strong> ${input}</div>`;
-        chatMessages.innerHTML += userMessage;
+            // Show chatbot and send welcome message on hover
+            chatIcon.addEventListener("mouseenter", function () {
+                chatContainer.style.display = "block";
+                if (chatMessages.innerHTML.trim() === "") {
+                    chatMessages.innerHTML += "<div><strong>Bot:</strong> Welcome! How can I assist you today?</div>";
+                }
+            });
 
-        // Get bot response
-        let botResponse = getBotResponse(input);
-        setTimeout(() => {
-            let botMessage = `<div class="chat-message bot"><strong>Bot:</strong> ${botResponse}</div>`;
-            chatMessages.innerHTML += botMessage;
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }, 600); // Delay for a more natural response
+            // Hide chatbot when mouse leaves the chat container
+            chatContainer.addEventListener("mouseleave", function () {
+                chatContainer.style.display = "none";
+            });
 
-        // Clear input field
-        document.getElementById("chat-input").value = "";
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-}
+            // Send message when the button is clicked
+            sendButton.addEventListener("click", function () {
+                sendMessage();
+            });
 
-function getBotResponse(input) {
-    input = input.toLowerCase();
-    if (input.includes("hello")) {
-        return "Hi there! How can I help you with your travel plans?";
-    } else if (input.includes("hotel")) {
-        return "I can help you find hotels! Try searching in the booking section.";
-    } else if (input.includes("places")) {
-        return "You can check the 'Explore' section for amazing places to visit!";
-    } else if (input.includes("flights")) {
-        return "Looking for flights? Check out airline websites for the best deals!";
-    } else {
-        return "I'm not sure about that. Try asking about travel, hotels, or destinations!";
-    }
-}
-</script>
+            // Send message when Enter key is pressed
+            chatInput.addEventListener("keypress", function (event) {
+                if (event.key === "Enter") {
+                    sendMessage();
+                }
+            });
+
+            function sendMessage() {
+                let input = chatInput.value;
+                if (input.trim() !== "") {
+                    let userMessage = `<div><strong>You:</strong> ${input}</div>`;
+                    chatMessages.innerHTML += userMessage;
+
+                    let botResponse = getBotResponse(input);
+                    setTimeout(() => {
+                        let botMessage = `<div><strong>Bot:</strong> ${botResponse}</div>`;
+                        chatMessages.innerHTML += botMessage;
+                        chatMessages.scrollTop = chatMessages.scrollHeight;
+                    }, 600);
+
+                    chatInput.value = "";
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }
+            }
+
+            function getBotResponse(input) {
+                input = input.toLowerCase();
+                if (input.includes("hello")) {
+                    return "Hi there! How can I help you with your travel plans?";
+                } else if (input.includes("hotel")) {
+                    return "I can help you find hotels! Try searching in the booking section.";
+                } else if (input.includes("places")) {
+                    return "You can check the 'Explore' section for amazing places to visit!";
+                } else if (input.includes("flights")) {
+                    return "Looking for flights? Check out airline websites for the best deals!";
+                } else {
+                    return "I'm not sure about that. Try asking about travel, hotels, or destinations!";
+                }
+            }
+        });
+    </script>
+
 
 
 
