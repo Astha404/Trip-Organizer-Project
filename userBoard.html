@@ -3,155 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup - Trip Organizer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>User Dashboard</title>
     <style>
-        * {
-            box-sizing: border-box;
+        body {
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            font-family: 'Poppins', sans-serif;
-        }
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             background: url('https://www.creativefabrica.com/wp-content/uploads/2020/12/11/Time-to-travel-background-Graphics-7122111-1.jpg') no-repeat center center fixed;
             background-size: cover;
+            color: #fff;
         }
-        .signup-container {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.3);
+
+        .dashboard {
+            display: flex;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+        }
+
+        .sidebar h2 {
             text-align: center;
-            width: 400px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            animation: fadeIn 0.8s ease-in-out;
-            position: relative;
+            color: #f9d342;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
         }
-        .signup-container h2 {
-            color:black;
-            margin-bottom: 15px;
-        }
-        .input-group {
-            position: relative;
-            margin: 15px 0;
-        }
-        .input-group input {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            border-radius: 8px;
-            outline: none;
-            font-size: 16px;
-            background: rgba(255, 255, 255, 0.2);
-            color: black;
-        }
-        .input-group input::placeholder {
-            color: rgba(11, 11, 11, 0.7);
-        }
-        .signup-btn, .back-btn {
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 8px;
-            font-size: 18px;
+
+        .sidebar ul li {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             cursor: pointer;
-            transition: 0.3s;
-            margin-top: 10px;
         }
-        .signup-btn {
-            background: rgba(255, 255, 255, 0.3);
-            color: black;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-        }
-        .signup-btn:hover {
-            background: rgba(255, 255, 255, 0.5);
-            box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.4);
-        }
-        .back-btn {
-    width: 100%;
-    padding: 12px;
-    background: rgba(255, 255, 255, 0.2); /* Light transparent background */
-    color: black; /* Change text color to black for visibility */
-    border: 2px solid rgb(8, 8, 8);
-    font-size: 18px;
-    cursor: pointer;
-    transition: 0.3s;
-    margin-top: 10px;
-    backdrop-filter: blur(5px);
-}
 
-.back-btn:hover {
-    background: white;
-    color: black;
-    box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.4);
-}
-
-        .login-link {
-            margin-top: 15px;
-            display: block;
+        .sidebar ul li:hover {
+            background: #f9d342;
             color: black;
-            text-decoration: none;
-            font-size: 14px;
         }
-        .login-link:hover {
-            text-decoration: underline;
+
+        .content {
+            flex: 1;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .trip-card {
+            background: rgba(255, 255, 255, 0.9);
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            margin: 20px auto;
+            max-width: 500px;
+        }
+
+        button {
+            background: #f9d342;
+            color: black;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #ffcc00;
         }
     </style>
 </head>
 <body>
-
-    <div class="signup-container">
-        <h2>🚀 Sign Up</h2>
-        <form id="signup-form">
-            <div class="input-group">
-                <input type="text" id="name" placeholder="Full Name" required>
+    <div class="dashboard">
+        <div class="sidebar">
+            <h2>Travel Dashboard</h2>
+            <ul>
+                <li onclick="showSection('itinerary')">Plan Itinerary</li>
+                <li onclick="showSection('places')">Explore Places</li>
+                <li onclick="showSection('reviews')">View Reviews</li>
+                <li onclick="showSection('logout')">Logout</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>Welcome to Your Travel Dashboard</h1>
+            <div id="section-content" class="trip-card">
+                <p>Select an option from the menu to get started.</p>
             </div>
-            <div class="input-group">
-                <input type="email" id="email" placeholder="Email Address" required>
-            </div>
-            <div class="input-group">
-                <input type="password" id="password" placeholder="Password" required>
-            </div>
-            <button type="submit" class="signup-btn">Create Account</button>
-            <button class="back-btn" onclick="goBack()">⬅ Back to Main Page</button>
-
-        </form>
-        <a href="login.html" class="login-link">Already have an account? Log in</a>
-        
+        </div>
     </div>
 
-
     <script>
-        function goBack() {
-            window.location.href = "index.html"; // Change this to your main page file
-        }
+        function showSection(section) {
+            let content = document.getElementById("section-content");
+            if (section === "itinerary") {
+content.innerHTML = "<h2>Plan Your Itinerary</h2><p>Organize your daily plans for your trip.</p><button onclick='location.href=\"itinerary.html\"'>Start Planning</button>";
 
-        document.getElementById("signup-form").addEventListener("submit", function(event) {
-            event.preventDefault();
 
-            const name = document.getElementById("name").value;
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
+            } else if (section === "places") {
+                content.innerHTML = "<h2>Explore Places</h2><p>Discover amazing places for your trip.</p><button>Explore Now</button>";
+            } else if (section === "reviews") {
+content.innerHTML = "<h2>View Reviews</h2><p>See what others say about different destinations.</p><button onclick='location.href=\"review.html\"'>Read Reviews</button>";
 
-            if (!name || !email || !password) {
-                alert("Please fill in all fields.");
-                return;
+            } else if (section === "logout") {
+                window.location.href = "index.html";
             }
-
-            alert("Signup Successful! (Backend will be handled later)");
-        });
+        }
     </script>
-
 </body>
 </html>
-
